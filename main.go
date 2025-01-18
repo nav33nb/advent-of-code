@@ -14,5 +14,6 @@ func main() {
 	fmt.Println()
 	fmt.Println(">> Hello from Day2")
 	day2.Puz1()
+	day2.Puz2()
 
 }
