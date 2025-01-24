@@ -1,0 +1,22 @@
+Running tool: /usr/local/go/bin/go test -benchmem -run=^$ -bench ^BenchmarkD4P1$ advent2024/day4
+
+goos: linux
+goarch: amd64
+pkg: advent2024/day4
+cpu: Intel(R) Xeon(R) CPU E3-1245 v3 @ 3.40GHz
+BenchmarkD4P1-8   	     483	   2456403 ns/op	 1061868 B/op	   35192 allocs/op
+PASS
+ok  	advent2024/day4	1.441s
+
+
+Running tool: /usr/local/go/bin/go test -benchmem -run=^$ -bench ^BenchmarkD4P1$ advent2024/day4
+
+goos: linux
+goarch: amd64
+pkg: advent2024/day4
+cpu: Intel(R) Xeon(R) CPU E3-1245 v3 @ 3.40GHz
+BenchmarkD4P1-8   	     608	   2036003 ns/op	  582718 B/op	    5274 allocs/op
+PASS
+ok  	advent2024/day4	1.442s
+
+

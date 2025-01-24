@@ -48,8 +48,7 @@ func Puz2() {
 	}
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
-	// get all enabled mul operation lines
-	// i.e. any mul instruction between do() and don't()
+	// get all operations
 	r, _ := regexp.Compile(`do\(\)|don't\(\)|mul\([0-9]+,[0-9]+\)`)
 	var sum int
 	for scanner.Scan() {
