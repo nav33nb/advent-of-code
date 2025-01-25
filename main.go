@@ -5,6 +5,7 @@ import (
 	"advent2024/day2"
 	"advent2024/day3"
 	"advent2024/day4"
+	"advent2024/day5"
 	"fmt"
 )
 
@@ -27,4 +28,9 @@ func main() {
 	fmt.Println(">> Day4")
 	day4.Puz1()
 	day4.Puz2()
+
+	fmt.Println()
+	fmt.Println(">> Day5")
+	day5.Puz1()
+	// day4.Puz2()
 }
