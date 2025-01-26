@@ -10,47 +10,71 @@ import (
 	"strings"
 )
 
-func Puz1() {
-	// rules, pages := getInput("day5/input/sample1.txt")
-	rules, pages := getInput("day5/input/5.1.txt")
+func Puz() {
+	rules, pageList := getInput("day5/input/sample1.txt")
+	// rules, pages := getInput("day5/input/5.1.txt")
 	// fmt.Println(rules)
 	// fmt.Println(pages)
 
-	// prevMap := map[string][]string{}
 	afterMap := map[string][]string{}
-
 	for _, rule := range rules {
 		afterMap[rule[0]] = append(afterMap[rule[0]], rule[1])
-		// prevMap[rule[1]] = append(afterMap[rule[1]], rule[0])
 	}
-	fmt.Println(afterMap)
-	// fmt.Println(prevMap)
+	// fmt.Println(afterMap)
 
 	sum := 0
-	for i := 0; i < len(pages); i++ {
-		allowedValues := append([]string{}, afterMap[pages[i][0]]...)
-		// fmt.Printf("allowed vals after %v is %v\n", pages[i][0], allowedValues)
-		pass := true
-		// fmt.Println()
-		for j := 1; j < len(pages[i]); j++ {
-			fmt.Printf("allowed vals after %v is %v\n", pages[i][j], allowedValues)
-			if !slices.Contains(allowedValues, pages[i][j]) {
-				// fmt.Printf("Failed for %v\n", pages[i])
-				pass = false
-				break
-			}
-			// fmt.Printf("%v can come after %v\n", pages[i][j], pages[i][j-1])
-			allowedValues = getIntersection(allowedValues, afterMap[pages[i][j]])
-		}
+	correctedSum := 0
+
+	for _, pages := range pageList {
+		pass := checkPageOrder(pages, afterMap)
 		if pass {
-			fmt.Printf("PASS %v\n", pages[i])
-			num, _ := strconv.Atoi(pages[i][len(pages[i])/2])
+			fmt.Printf("PASS %v\n", pages)
+			num, _ := strconv.Atoi(pages[len(pages)/2])
 			sum += num
 		} else {
-			fmt.Printf("FAIL %v\n", pages[i])
+			fmt.Printf("FAIL %v\n", pages)
+			mid, err := getCorrectedMid(pages, afterMap)
+			if err != nil {
+				log.Fatal(err)
+			}
+			correctedSum += mid
 		}
 	}
 	fmt.Println(sum)
+	fmt.Println(correctedSum)
+
+}
+
+func checkPageOrder(pages []string, afterMap map[string][]string) bool {
+	allowedValues := []string{}
+	// fmt.Printf("allowed vals for %v after %v is %v\n", pages[i][0], "''", allowedValues)
+	allowedValues = append(allowedValues, afterMap[pages[0]]...)
+	pass := true
+	for _, page := range pages[1:] {
+		// fmt.Printf("allowed vals for %v is %v\n", page, allowedValues)
+		if !slices.Contains(allowedValues, page) {
+			fmt.Printf("Failed for %v\n", page)
+			pass = false
+			break
+		}
+		allowedValues = getIntersection(allowedValues, afterMap[page])
+	}
+	return pass
+}
+
+func getCorrectedMid(pages []string, m map[string][]string) (int, error) {
+	possibilities := map[string][]string{}
+	fmt.Printf("  TOTAL: %v elements\n", len(pages))
+	for _, page := range pages {
+		intersection := getIntersection(m[page], pages)
+		possibilities[page] = intersection
+		fmt.Printf("  correct index for %v is i=%v\n", page, len(intersection))
+		if len(intersection) == len(pages)/2 {
+			fmt.Println("    middle ele is", page)
+			return strconv.Atoi(page)
+		}
+	}
+	return 0, fmt.Errorf("no middle ele found")
 }
 
 func getIntersection(s1 []string, s2 []string) []string {

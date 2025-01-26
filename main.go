@@ -31,6 +31,5 @@ func main() {
 
 	fmt.Println()
 	fmt.Println(">> Day5")
-	day5.Puz1()
-	// day4.Puz2()
+	day5.Puz()
 }
