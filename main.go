@@ -37,4 +37,5 @@ func main() {
 	fmt.Println()
 	fmt.Println(">> Day6")
 	day6.Puz()
+	day6.Puz2()
 }
