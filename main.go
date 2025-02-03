@@ -7,7 +7,9 @@ import (
 	"advent2024/day4"
 	"advent2024/day5"
 	"advent2024/day6"
+	"advent2024/day7"
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -38,4 +40,17 @@ func main() {
 	fmt.Println(">>>>>>>>>> Day6")
 	day6.Puz()
 	day6.Puz2()
+
+	t := time.Now()
+	fmt.Println()
+	fmt.Println(">>>>>>>>>> Day7")
+	day7.Puz()
+	fmt.Println(time.Since(t))
+
+	t = time.Now()
+	fmt.Println()
+	fmt.Println(">>>>>>>>>> Day8")
+	day8.Puz()
+	fmt.Println(time.Since(t))
+
 }
