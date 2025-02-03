@@ -8,6 +8,7 @@ import (
 	"advent2024/day5"
 	"advent2024/day6"
 	"advent2024/day7"
+	"advent2024/day8"
 	"fmt"
 	"time"
 )
