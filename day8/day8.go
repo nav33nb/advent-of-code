@@ -16,6 +16,26 @@ func Puz() {
 		}
 		fmt.Println("")
 	}
+	loc := map[rune][][2]int{}
+	for i, row := range v {
+		for j, c := range row {
+			if c != '.' {
+				loc[c] = append(loc[c], [2]int{i, j})
+			}
+		}
+	}
+
+	// for k, v := range loc {
+	// 	fmt.Println(string(k), "-> ", v)
+	// }
+
+	for k, v := range loc {
+		for i, _ := range v {
+			for j=i+1; j<len(v) {
+
+			}
+		}
+	}
 }
 
 func getInput(path string) [][]rune {
