@@ -52,6 +52,7 @@ func main() {
 	fmt.Println()
 	fmt.Println(">>>>>>>>>> Day8")
 	day8.Puz()
+	day8.Puz2()
 	fmt.Println(time.Since(t))
 
 }
