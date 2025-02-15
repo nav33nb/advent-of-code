@@ -2,6 +2,7 @@ package main
 
 import (
 	"advent2024/day1"
+	"advent2024/day10"
 	"advent2024/day2"
 	"advent2024/day3"
 	"advent2024/day4"
@@ -59,8 +60,15 @@ func main() {
 	t = time.Now()
 	fmt.Println()
 	fmt.Println(">>>>>>>>>> Day9")
-	// day9.Puz()
+	day9.Puz()
 	day9.Puz2()
+	fmt.Println(time.Since(t))
+
+	t = time.Now()
+	fmt.Println()
+	fmt.Println(">>>>>>>>>> Day10")
+	day10.Puz()
+	day10.Puz2()
 	fmt.Println(time.Since(t))
 
 }
